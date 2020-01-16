@@ -14,20 +14,26 @@ int main( int argc,char **argv)
 
      int id_recv;
      MPI_Status status;
+     int nbr;
 
      if(identifiant == 0){
-       MPI_Send(&identifiant,1,MPI_INT,1,1,MPI_COMM_WORLD);
+	nbr=100;
+       MPI_Send(&nbr,1,MPI_INT,1,1,MPI_COMM_WORLD);
        MPI_Recv(&id_recv,1,MPI_INT,1,1,MPI_COMM_WORLD,&status);
-       printf(" je suis le processus no %d, j'ai recu le message  %d\n",identifiant, id_recv );
+       printf("je suis le processus no %d, j'ai recu le message  %d\n",identifiant, id_recv );
      }
 
      if(identifiant == 1){
-     MPI_Send(&identifiant,1,MPI_INT,0,1,MPI_COMM_WORLD);
-     MPI_Recv(&id_recv,1,MPI_INT,0,1,MPI_COMM_WORLD,&status);
-      printf(" je suis le processus no %d, j'ai recu le message  %d\n",identifiant, id_recv );
+	nbr=200;
+     	MPI_Send(&nbr,1,MPI_INT,0,1,MPI_COMM_WORLD);
+     	MPI_Recv(&id_recv,1,MPI_INT,0,1,MPI_COMM_WORLD,&status);
+      printf("je suis le processus no %d, j'ai recu le message  %d\n",identifiant, id_recv );
     }
  }
    MPI_Finalize();
    return 0;
+
 }
+
+
 
