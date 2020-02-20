@@ -10,24 +10,25 @@ int main( int argc,char **argv)
    MPI_Comm_size(MPI_COMM_WORLD,&nb_processus);
    MPI_Comm_rank(MPI_COMM_WORLD,&identifiant);
 
-   if (nb_processus == 2) {
-
+   if (nb_processus == 2) 
+   {
      int id_recv;
      MPI_Status status;
 
-     if(identifiant == 0){
+     if(identifiant == 0)
+     {
        MPI_Send(&identifiant,1,MPI_INT,1,1,MPI_COMM_WORLD);
        MPI_Recv(&id_recv,1,MPI_INT,1,1,MPI_COMM_WORLD,&status);
        printf(" je suis le processus no %d, j'ai recu le message  %d\n",identifiant, id_recv );
      }
-
-     if(identifiant == 1){
-     MPI_Send(&identifiant,1,MPI_INT,0,1,MPI_COMM_WORLD);
-     MPI_Recv(&id_recv,1,MPI_INT,0,1,MPI_COMM_WORLD,&status);
-      printf(" je suis le processus no %d, j'ai recu le message  %d\n",identifiant, id_recv );
-    }
- }
-   MPI_Finalize();
-   return 0;
+     if(identifiant == 1)
+     {
+	MPI_Send(&identifiant,1,MPI_INT,0,1,MPI_COMM_WORLD);
+     	MPI_Recv(&id_recv,1,MPI_INT,0,1,MPI_COMM_WORLD,&status);
+      	printf(" je suis le processus no %d, j'ai recu le message  %d\n",identifiant, id_recv );
+     }	
+   }
+ MPI_Finalize();
+ return 0;
 }
 

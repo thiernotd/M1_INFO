@@ -23,8 +23,9 @@ int main( int argc,char **argv)
     }
 
     if(identifiant == 1){
+      nbr=200;
       MPI_Recv(&nbr_recv,1,MPI_INT,0,1,MPI_COMM_WORLD,&status);
-      MPI_Send(&nbr_recv,1,MPI_INT,0,1,MPI_COMM_WORLD);
+      MPI_Send(&nbr,1,MPI_INT,0,1,MPI_COMM_WORLD);
       printf("processus 1 : j\'ai reçu %d je renvoi %d \n",nbr_recv,nbr_recv );
     }
   }
